@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results</title>
+    <style>
+      body {
+            background: linear-gradient(300deg, #00bfff, #ff4c, #ef8172);
+            background-size: 180% 180%;
+            animation: gradient-animation 18s ease infinite;
+}
+
+       @keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+    </style>
   </head>
   <body>
     <h1>Results</h1>
@@ -12,5 +31,6 @@
     <p><strong>Physics Marks:</strong> {{ physicsCorrect }}</p>
     <p><strong>Chemistry Marks:</strong> {{ chemistryCorrect }}</p>
     <a href="/">Check another URL</a>
+    <h2>Share with your Friends ☺️</h2>
   </body>
 </html>

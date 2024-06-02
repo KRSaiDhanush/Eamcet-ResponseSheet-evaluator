@@ -4,9 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results Checker</title>
+    <style>
+      body {
+            background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
+            background-size: 180% 180%;
+            animation: gradient-animation 18s ease infinite;
+}
+
+       @keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+    </style>
   </head>
   <body>
-    <h1>Enter the URL of the Results Page</h1>
+    <h1>Your work made Easy </h1>
+    <p>paste your reposnse sheet and know your marks</p>
+    <h3> Don't have URL ??<br>No Worries<br>Follow this steps </h3>
+    <ol>
+      <li>
+        Check this link <a href="https://cets.apsche.ap.gov.in/EAPCET/Eapcet/EAPCET_ResponseSheet.aspx">Download Response Sheet</a> 
+      </li>
+      <li>
+        Enetr your Details
+      </li>
+      <li>
+        Copy the URL(link) and paste it below 
+      </li>
+    </ol>
+    <h2>Enter the URL of the Your Response Sheet</h2>
     <form action="/results" method="post">
       <label for="url">URL:</label>
       <input type="text" id="url" name="url" required>
