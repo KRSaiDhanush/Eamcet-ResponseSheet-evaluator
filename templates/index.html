@@ -9,6 +9,7 @@
             background: linear-gradient(300deg,#ef8172,white, #00bfff)50%;
             background-size: 180% 180%;
             animation: gradient-animation 18s ease infinite;
+            font-size: 1.5rem;
 }
 
        @keyframes gradient-animation {
@@ -21,10 +22,20 @@
   100% {
     background-position: 0% 50%;
   }
-}
+                                     }
+   @media screen and (min-width: 600px) {
+  .container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+                                        }
     </style>
   </head>
   <body>
+  <div class="container">
     <h1>Your work made Easy </h1>
     <p>paste your reposnse sheet and know your marks</p>
     <h3> Don't have URL ??<br>No Worries<br>Follow this steps </h3>
@@ -33,7 +44,7 @@
         Check this link <a href="https://cets.apsche.ap.gov.in/EAPCET/Eapcet/EAPCET_ResponseSheet.aspx">Download Response Sheet</a> 
       </li>
       <li>
-        Enetr your Details
+        Enter your Details
       </li>
       <li>
         Copy the URL(link) and paste it below 
@@ -45,5 +56,6 @@
       <input type="text" id="url" name="url" required>
       <button type="submit">Check Results</button>
     </form>
+  </div>
   </body>
 </html>
