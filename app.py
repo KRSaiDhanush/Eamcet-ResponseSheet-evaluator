@@ -1,9 +1,8 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 import requests
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
-url_file = 'urls.txt'  # Path to the text file
 
 @app.route('/')
 def home():
@@ -11,33 +10,23 @@ def home():
 
 @app.route('/results', methods=['POST'])
 def results():
+    # URL of the web page
     url = request.form['url']
-
-    # Save the URL to the file
-    f=open(url_file, 'r+')
-    
-    urls=f.readlines()
-    flag=True
-    for ele in urls:
-        if ele.strip()==url :
-            flag=False
-            break
-    if flag:
-        f.write(url + '\n')
-    f.close()
 
     # Send a GET request to the URL
     response = requests.get(url)
+
+    # Parse the HTML content
     soup = BeautifulSoup(response.content, 'html.parser')
 
-    # Extract answers
+    # Find all elements with the specified class name
     elements = soup.find_all(class_='rightAns')
     Answers = [element.get_text().strip()[0] for element in elements]
     mathsAnswers = Answers[:80]
     physicsAnswers = Answers[80:120]
     chemistryAnswers = Answers[120:]
 
-    # Extract chosen answers
+    # Find all elements with the specified class name
     elements = soup.find_all(class_='menu-tbl')
     ChoosenAnswers = [element.find_all()[-1].get_text() for element in elements]
     MathsChoosenAnswers = ChoosenAnswers[:80]
@@ -59,12 +48,6 @@ def results():
     return render_template('results.html', total_marks=total_marks, mathsCorrect=mathsCorrect,
                            physicsCorrect=physicsCorrect, chemistryCorrect=chemistryCorrect)
 
-@app.route('/urls', methods=['GET'])
-def get_urls():
-    with open(url_file, 'r') as f:
-        urls = f.readlines()
-    urls = [url.strip() for url in urls]
-    return jsonify(urls)
 
-
-app.run(debug=True, port=5001)
+'''if __name__ == "__main__":
+    app.run(debug=True, port=5001)'''
